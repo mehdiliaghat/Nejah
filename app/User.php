@@ -15,7 +15,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'national_id','post_id','role_id', 'first_name','last_name', 'email', 'password',
+        'photo','sex','edu','phone','date_birth','address','type',
     ];
 
     /**
@@ -26,4 +27,42 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    public $incrementing=false;
+    public function assignedcourses()
+    {
+        return $this->hasMany(Assignedcourse::class);
+    }
+    public function students()
+    {
+        return $this->hasMany(Student::class);
+    }
+    public function recordscores()
+    {
+        return $this->hasMany(Recordscore::class);
+    }
+
+    public function roles()
+    {
+        return $this->hasOne(Role::class);
+    }
+    private function checkIfUserHasRole($need_role)
+    {
+        return(strtolower($need_role)==strtolower($this->role->name)) ? true :null;
+    }
+    public function hasRole($roles)
+    {
+        if(is_array($roles))
+        {
+            foreach ($roles as $need_role)
+            {
+                if($this->checkIfUserHasRole($need_role))
+                {
+                    return true ;
+                }
+            }
+        }else{
+            return $this->checkIfUserHasRole($roles);
+        }
+        return false;
+    }
 }

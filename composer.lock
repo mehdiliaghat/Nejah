@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1df1e4fee8670fe5c4c8f4d1febd5014",
+    "content-hash": "e647ee5f4a95b46891935127f5db81bc",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -870,6 +870,47 @@
                 }
             ],
             "time": "2015-04-20T18:58:01+00:00"
+        },
+        {
+            "name": "jgrossi/laravel-mutable",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jgrossi/laravel-mutable.git",
+                "reference": "f2a8f3b93ded561074f2c10af3aa970f97d806e9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jgrossi/laravel-mutable/zipball/f2a8f3b93ded561074f2c10af3aa970f97d806e9",
+                "reference": "f2a8f3b93ded561074f2c10af3aa970f97d806e9",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "~5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jgrossi\\Mutable\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Junior Grossi",
+                    "email": "juniorgro@gmail.com",
+                    "homepage": "http://jgrossi.com"
+                }
+            ],
+            "description": "Change model attributes values easily",
+            "homepage": "http://github.com/jgrossi/laravel-mutable",
+            "time": "2017-07-20T17:40:48+00:00"
         },
         {
             "name": "laravel/framework",

@@ -15,9 +15,41 @@ use Faker\Generator as Faker;
 
 $factory->define(App\User::class, function (Faker $faker) {
     return [
+        'national_id' => '24204',
+        'post_id' => $faker->postcode,
+        'first_name' => 'mehdi',
+        'last_name' => 'liaghat',
+        'email' =>$faker->email,
+        'sex' =>$faker->randomElement(['male','female']),
+        'edu' => 'lisans',
+        'phone' =>$faker->phoneNumber,
+        'date_birth' => $faker->dateTimeBetween('-30 days', 'now')->format('Y-m-d'),
+        'address' => $faker->address,
+        'type' =>  $faker->randomElement(['Student','Prof','Manager','Operator','Employee']),
+        'password' => '123456'
+    ];
+});
+$factory->define(App\Assignedcourse::class, function (Faker $faker) {
+    $users = \App\User::all()->pluck('id')->toArray();
+    $user_id = $faker->randomElement($users);
+    return [
+        'course_id' => $faker->postcode,
+        'post_id' => $faker->postcode,
+        'course_gp'=>$faker->numberBetween(0, 10),
         'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
-        'remember_token' => str_random(10),
+        'capacity'=>$faker->numberBetween(25, 30),
+        'unit'=>$faker->numberBetween(0, 4),
+        'date'=>$faker->date($format = 'Y-m-d', $max = 'now'),
+        'day'=>$faker->dayOfWeek('now'),
+        'time'=>$faker->time($format = 'H:i:s', $max = 'now'),
+        'location'=>'فنی مهندسی',
+        'term'=>'922',
+        'pdf_path'=>'notpdf',
+        'prerequisite'=>'نامشخص',
+        'need'=>'نا مشخص',
+        'type'=>$faker->randomElement(['theory','action']),
+        'prof'=>$faker->name,
+        'user_id'=>$user_id,
+
     ];
 });

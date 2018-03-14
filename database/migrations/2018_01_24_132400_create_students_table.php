@@ -15,16 +15,19 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->increments('id');
-            $table->char('ave_nyear');
-            $table->string('condition');
-            $table->integer('current_semester');
-            $table->integer('entering_year');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('nightly_day');
-            $table->string('nyear');
-            $table->char('user');
-            $table->char('pass');
+            $table->char('ave');
+            $table->char('ave_term');
+            $table->integer('unit_getting');
+            $table->integer('unit_spent');
+            $table->integer('unit_term');
+            $table->enum('state_term',['normal','Conditional']);
+            $table->enum('state' ,['Cancel' ,'expulsion','vacation','Study']);
+            $table->integer('term');
+            $table->string('arrival');
+            $table->enum('nighday',['night','day']);
+            $table->string('num_term');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
